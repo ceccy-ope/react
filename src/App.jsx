@@ -1,24 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import UserOutput from './component/UserOutput'
+import UserInput from './component/UserInput'
 import './component/App.css'
 
-const App = () => {
-  return (
-    <div className='App'>
+
+export default class App extends Component {
+  state = {
+    username: 'Temitayo'
+  };
+
+  changeHandler = (event) =>{
+    this.setState({username: event.target.value})
+  }
+
+  render() {
+    return (
+      <div className='App'>
   
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      <UserOutput />
-      
-    </div>
-  )
+      <UserOutput username={this.state.username}/>
+      <UserInput  change={this.changeHandler} />
+      </div>
+    )
+  }
 }
 
-export default App
